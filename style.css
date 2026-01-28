@@ -1,0 +1,326 @@
+:root {
+    /* Palette: Museum / Editorial */
+    --bg-paper: #F5F3F0;
+    /* Off-white / warm paper */
+    --text-charcoal: #222222;
+    /* High contrast ink */
+    --text-caption: #666666;
+    /* Warm Gray */
+    --accent-red-muted: #8a3324;
+    /* Muted Red (Oxblood/Brick) - distinct but not neon */
+    --line-hairline: rgba(0, 0, 0, 0.15);
+    /* Very thin lines */
+
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-paper);
+    color: var(--text-charcoal);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 30px;
+    position: relative;
+    border-left: 1px solid rgba(0, 0, 0, 0.03);
+    /* Subtle page edge hint */
+    border-right: 1px solid rgba(0, 0, 0, 0.03);
+    background-color: #faf9f8;
+    /* Slightly lighter inner page */
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.02);
+    min-height: 100vh;
+}
+
+/* Header */
+.main-header {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    /* Editorial often aligns text nicely, left or centered */
+    padding: 60px 0;
+    position: relative;
+}
+
+.main-header h1 {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--text-charcoal);
+    letter-spacing: -0.02em;
+}
+
+.main-header .highlight {
+    color: var(--text-charcoal);
+    font-style: italic;
+    font-weight: 400;
+    display: block;
+    /* Break line for impact */
+    font-size: 4rem;
+}
+
+.subtitle {
+    font-family: var(--font-body);
+    color: var(--accent-red-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--text-charcoal);
+    display: inline-block;
+    align-self: flex-start;
+}
+
+.header-verse {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-caption);
+    margin: 0 0 0 40px;
+    /* Indented like a book quote */
+    border-left: 1px solid var(--accent-red-muted);
+    padding-left: 20px;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    font-size: 1.5rem;
+    color: var(--text-charcoal);
+    opacity: 0.3;
+}
+
+/* Timeline / Structure */
+.timeline {
+    position: relative;
+    padding: 60px 0 100px 0;
+}
+
+/* The Main Vertical Hairline Guide */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    /* Align with the dots */
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--line-hairline);
+    z-index: 0;
+}
+
+/* Sections */
+.card {
+    background: transparent;
+    /* No card bg */
+    border: none;
+    box-shadow: none;
+    padding: 0 0 0 50px;
+    /* Space for the timeline line */
+    margin-bottom: 80px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease;
+}
+
+.card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* The Node on the line */
+.card::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    /* Center on line */
+    top: 5px;
+    width: 9px;
+    height: 9px;
+    background: var(--bg-paper);
+    border: 1px solid var(--text-charcoal);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Optional: Active/Filled node for accent */
+.card:nth-child(even)::before {
+    background: var(--text-charcoal);
+}
+
+.card-number {
+    position: absolute;
+    left: -10px;
+    top: -35px;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-caption);
+    transform: rotate(-90deg);
+    transform-origin: left bottom;
+    letter-spacing: 2px;
+}
+
+/* Icons - simplified to silhouettes */
+.card-icon {
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    color: var(--text-charcoal);
+    margin-bottom: 15px;
+    border: 1px solid var(--line-hairline);
+    border-radius: 50%;
+    /* circle stamp style */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 1.5px;
+}
+
+.card:nth-of-type(2) .card-icon {
+    color: var(--accent-red-muted);
+    border-color: var(--accent-red-muted);
+}
+
+.card:nth-of-type(5) .card-icon {
+    background: var(--text-charcoal);
+    color: var(--bg-paper);
+    border-color: var(--text-charcoal);
+}
+
+/* Typography Editorial Hierarchy */
+.card h2 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: var(--text-charcoal);
+    margin-bottom: 5px;
+    line-height: 1.1;
+}
+
+.card h3 {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--text-caption);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+
+/* Content Layout */
+.content-block {
+    margin: 20px 0;
+    padding-left: 0;
+    border-left: none;
+    position: relative;
+}
+
+/* Decorative top bracket for content */
+.content-block::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--accent-red-muted);
+    margin-bottom: 15px;
+}
+
+.content-block p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.content-block strong {
+    font-family: var(--font-heading);
+    font-style: italic;
+    color: var(--text-charcoal);
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+/* References as captions */
+.references {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 30px;
+    font-size: 0.7rem;
+    font-family: var(--font-body);
+    color: var(--text-caption);
+    border-top: 1px solid var(--line-hairline);
+    padding-top: 10px;
+    width: fit-content;
+}
+
+.ref-badge {
+    background: transparent;
+    padding: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.key-text {
+    padding: 0;
+    color: var(--text-charcoal);
+    font-style: italic;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 80px 0 40px 0;
+    border-top: 1px solid var(--line-hairline);
+    margin-top: 40px;
+}
+
+.footer-logo {
+    color: var(--text-charcoal);
+    margin-bottom: 20px;
+}
+
+.footer-text {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--text-caption);
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .container {
+        max-width: 900px;
+    }
+
+    .main-header h1 {
+        font-size: 4.5rem;
+    }
+}
