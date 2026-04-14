@@ -377,6 +377,81 @@ footer {
     color: var(--text-charcoal);
 }
 
+/* Diagnostic Intro Section */
+.diagnostic-section {
+    margin: 40px 0 80px 0;
+    padding: 35px 0 40px 0;
+    border-top: 1px solid var(--line-hairline);
+    border-bottom: 1px solid var(--line-hairline);
+}
+
+.diagnostic-header h2 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    color: var(--text-charcoal);
+}
+
+.diagnostic-period {
+    font-size: 0.8rem;
+    color: var(--accent-red-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.diagnostic-block h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    color: var(--text-charcoal);
+}
+
+.diagnostic-block h4 {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.diagnostic-block p {
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.diagnostic-grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+
+.diagnostic-card {
+    border: 1px solid var(--line-hairline);
+    background: #faf9f8;
+    padding: 20px;
+}
+
+.diagnostic-card h5 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    color: var(--text-charcoal);
+}
+
+.diagnostic-card ol {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.diagnostic-card li {
+    margin-bottom: 8px;
+    color: #444;
+}
+
 /* Plan Section */
 .plan-section {
     margin: 20px 0 80px 0;
@@ -502,6 +577,98 @@ footer {
     font-weight: 700;
 }
 
+/* Joint Activities Section */
+.joint-section {
+    margin: 10px 0 70px 0;
+    padding: 35px 0 40px 0;
+    border-top: 1px solid var(--line-hairline);
+}
+
+.joint-header {
+    margin-bottom: 25px;
+}
+
+.joint-header h2 {
+    font-family: var(--font-heading);
+    font-size: 2.3rem;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    color: var(--text-charcoal);
+}
+
+.joint-header p {
+    color: #444;
+}
+
+.joint-activities {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.joint-card {
+    border: 1px solid var(--line-hairline);
+    background: #faf9f8;
+    padding: 20px;
+}
+
+.joint-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    color: var(--text-charcoal);
+}
+
+.joint-card p {
+    color: #444;
+}
+
+.impact-box {
+    margin-top: 24px;
+    border: 1px solid var(--line-hairline);
+    background: #faf9f8;
+    padding: 24px;
+}
+
+.impact-box h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    line-height: 1.2;
+    margin-bottom: 14px;
+    color: var(--text-charcoal);
+}
+
+.impact-list {
+    list-style: none;
+    margin-bottom: 16px;
+}
+
+.impact-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 8px;
+    color: #444;
+}
+
+.impact-list li::before {
+    content: '§';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent-red-muted);
+    font-weight: 700;
+}
+
+.impact-closing {
+    border-top: 1px solid var(--line-hairline);
+    padding-top: 12px;
+    font-family: var(--font-heading);
+    font-style: italic;
+    color: var(--text-charcoal);
+    font-size: 1.05rem;
+}
+
 /* Reference Image Styles */
 .reference-section img {
     border: 1px solid var(--line-hairline);
@@ -519,6 +686,14 @@ footer {
     }
 
     .plan-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .diagnostic-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .joint-activities {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
